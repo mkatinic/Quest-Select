@@ -1,0 +1,58 @@
+/*
+Home page styling
+*/
+
+html {
+  font-size: 62.5%;
+}
+
+body {
+  margin: 0;
+  font-family: 300 11px/1.4 'Helvetica Neue', sans-serif;
+  color: #444;
+  background-color: rgb(32, 32, 32);
+  background-size: cover;
+  overflow: auto;
+  display: block;
+  -webkit-font-smoothing: antialiased;
+  -moz-osx-font-smoothing: grayscale;
+}
+
+@keyframes rainbow {
+  100%,0%{
+    background: linear-gradient(to top right, black 95%, rgb(255,0,0) 100%);
+  }
+  8%{
+    background: linear-gradient(to top right, black 95%, rgb(255,127,0) 100%);
+  }
+  16%{
+    background: linear-gradient(to top right, black 95%, rgb(255,255,0) 100%);
+  }
+  25%{
+    background: linear-gradient(to top right, black 95%, rgb(127,255,0) 100%);
+  }
+  33%{
+    background: linear-gradient(to top right, black 95%, rgb(0,255,0) 100%);
+  }
+  41%{
+    background: linear-gradient(to top right, black 95%, rgb(0,255,127) 100%);
+  }
+  50%{
+    background: linear-gradient(to top right, black 95%, rgb(0,255,255) 100%);
+  }
+  58%{
+    background: linear-gradient(to top right, black 95%, rgb(0,127,255) 100%);
+  }
+  66%{
+    background: linear-gradient(to top right, black 95%, rgb(0,0,255) 100%);
+  }
+  75%{
+    background: linear-gradient(to top right, black 95%, rgb(127,0,255) 100%);
+  }
+  83%{
+    background: linear-gradient(to top right, black 95%, rgb(255,0,255) 100%);
+  }
+  91%{
+    background: linear-gradient(to top right, black 95%, rgb(255,0,127) 100%);
+  }
+}

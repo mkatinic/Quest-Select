@@ -1,0 +1,79 @@
+.profileCreation-page {
+    display: flex;
+    justify-content: center;
+    align-items: center;
+    height: 100%;
+  }
+  
+  .form {
+    width: 60%;
+    height: 100%;
+    padding: 10px;
+    border: 1px solid #ccc;
+    border-radius: 8px;
+    box-shadow: 0 0 10px rgba(0, 0, 0, 0.1);
+    background-color: white;
+
+    h1 {
+        text-align: center;
+        font-family: 'Helvetica Neue', sans-serif;
+        font-size: 2.2em;
+    }
+  
+    label {
+      display: block;
+      margin-bottom: 0px;
+      width: 90%;
+      margin-right: auto;
+      margin-left: auto;
+  
+      input {
+        width: 100%;
+        padding: 8px;
+        margin-top: 2px;
+        margin-bottom: 2px;
+        border: 1px solid #ccc;
+        border-radius: 4px;
+      }
+  
+      small {
+        display: block;
+        margin-top: 6px;
+      }
+  
+      ul {
+        list-style-type: none;
+        padding: 0;
+        margin: 0; 
+  
+        li {
+          margin-bottom: 2px; 
+        }
+      }
+  
+      p {
+        margin-top: 6px;
+      }
+    }
+  
+    button {
+      background-color: #4caf50;
+      color: white;
+      padding: 10px 15px;
+      border: none;
+      border-radius: 4px;
+      cursor: pointer;
+      font-size: 16px;
+  
+      &:hover {
+        background-color: #45a049;
+      }
+  
+      &:disabled {
+        background-color: #cccccc;
+        cursor: not-allowed;
+      }
+    }
+  }
+  
+  
