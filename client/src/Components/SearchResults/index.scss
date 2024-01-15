@@ -1,0 +1,23 @@
+.result-page {
+    display: flex;
+    flex-wrap: wrap;
+    justify-content: space-around;
+    margin-top: 20px;
+
+    .result-tile {
+        border: 1px solid #ddd;
+        background-color: black;
+        color: white;
+        padding: 10px;
+        margin: 10px;
+        width: 200px;
+        text-align: center;
+        }
+          
+        .result-tile img {
+        max-width: 100%;
+        height: auto;
+        margin-bottom: 10px;
+        }
+}
+  

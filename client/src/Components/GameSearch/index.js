@@ -1,11 +1,13 @@
 import './index.scss';
 import React, { useState } from 'react';
 import axios from 'axios';
+import SearchResults from '../SearchResults';
 
 const GameSearch = () => {
   const [selectedTile, setSelectedTile] = useState(null);
   const [selectedOptions, setSelectedOptions] = useState([]);
   const [tileOptions, setTileOptions] = useState({});
+  const [games, setGames] = useState([]);
 
   const getOptionsForTile = (tile) => {
     switch (tile) {
@@ -53,16 +55,17 @@ const GameSearch = () => {
   const handleSearchClick = async () => {
     try {
       const response = await axios.post('http://localhost:3001/api/searchGames', { selectedOptions });
-
-      const games = response.data;
-
-      console.log('List of Games:', games);
+      
+      const gameData = response.data;
+      setGames(gameData);
+      console.log('List of Games:', gameData);
     } catch (error) {
       console.error('Error searching for games:', error.message);
     }
   };
 
   return (
+    <>
     <div className="gamesearch-page">
       <div className="header">
         <div className="buttons">
@@ -105,6 +108,11 @@ const GameSearch = () => {
         </ul>
       </div>
     </div>
+
+    <div className="result-page">
+      <SearchResults games={games} />
+    </div>
+    </>
   );
 };
 
