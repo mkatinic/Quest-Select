@@ -1,9 +1,11 @@
 // https://github.com/twitchtv/igdb-api-node
+// Search fields = 'genres.name, rating, platforms.name, release_dates.y
 
 const express = require('express');
 const bodyParser = require('body-parser');
 const axios = require('axios');
 const cors = require('cors');
+const { query } = require('express');
 const igdb = require('igdb-api-node').default;
 
 const app = express();
@@ -56,16 +58,16 @@ const isTokenValid = () => {
 };
 
 app.post('/api/searchGames', async (req, res) => {
+  const selectedOptions = req.body.selectedOptions;
   const currentAccessToken = await getAccessToken();
+  const query = buildQueryString(selectedOptions);
   try {
-    //Hardcoded for testing
     const response = await igdb(clientId, currentAccessToken)
-        .fields('*')
-        .where('genres.name = "Role-playing (RPG)" & rating >= 80;')
-        .limit(2)
+        .fields('name,genres.name,themes.name,game_modes.name')
+        .where(`${query}`)
+        .limit(5)
         .request('/games');
 
-    console.log(response.data); 
     res.json(response.data);
   } catch (err) {
       console.error("-----ERROR-----");
@@ -74,6 +76,36 @@ app.post('/api/searchGames', async (req, res) => {
       console.error(err);
   }
 });
+
+function buildQueryString(selectedOptions) {
+  let queryString = '';
+  let idx = 0
+
+  for(const option of selectedOptions) {
+    if(option[0] == 'Platform'){
+      queryString += `platforms.name = "${option[1]}"`;
+    } else if(option[0] == 'Genre') {
+      queryString += `genres.name = "${option[1]}"`;
+    } else if(option[0] == 'Mode') {
+      queryString += `game_modes.name = "${option[1]}"`;
+    } else if(option[0] == 'Theme') {
+      queryString += `themes.name = "${option[1]}"`;
+    } else if(option[0] == 'Minimum Rating') {
+      queryString += `rating >= ${option[1]}`;
+    } else if(option[0] == 'Minimum Year') {
+      queryString += `release_dates.y >=  ${option[1]}`;
+    }
+
+    idx++;
+    if(idx < selectedOptions.length){
+      queryString += " & ";
+    }else {
+      queryString += ";";
+    }
+  }
+
+  return queryString;
+};
 
 app.listen(PORT, () => {
   console.log(`Server is running on port ${PORT}`);

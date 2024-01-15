@@ -10,9 +10,9 @@ const GameSearch = () => {
   const getOptionsForTile = (tile) => {
     switch (tile) {
       case 'Platform':
-        return ['PC', 'Xbox S|X', 'PlayStation 5', 'Xbox One', 'Playstation 4', 'Xbox 360', 'Playstation 3', 'Nintendo Switch'];
+        return ['PC (Microsoft Windows)', 'Xbox Series S|X', 'PlayStation 5', 'Xbox One', 'Playstation 4', 'Xbox 360', 'Playstation 3', 'Nintendo Switch'];
       case 'Genre':
-        return ['RPG', 'FPS', 'Indie', 'Platform', 'Point-and-click', 'RTS', 'Simulator', 'Sports', 'Arcade'];
+        return ['Role-playing (RPG)', 'Shooter', 'Indie', 'Platform', 'Point-and-click', 'Real Time Strategy (RTS)', 'Simulator', 'Sports', 'Arcade', 'Adventure', 'Racing'];
       case 'Minimum Rating':
         return ['10', '20', '30', '40', '50', '60', '70', '80', '90'];
       case 'Minimum Year':
@@ -32,20 +32,21 @@ const GameSearch = () => {
     setTileOptions({ ...tileOptions, [tile]: optionsForTile });
   };
 
-  const handleOptionClick = (option) => {
-    if(!selectedOptions.includes(option)) {
-      setSelectedOptions([...selectedOptions, option]);
+  const handleOptionClick = (tile, option) => {
+    const isOptionSelected = selectedOptions.some(([existingTileValue, existingOption]) => existingTileValue === tile);
+    if (!isOptionSelected) {
+      setSelectedOptions([...selectedOptions, [tile, option]]);
     }
   };
 
   const handleOptionRemove = (removedTile) => {
     setSelectedOptions((prevSelectedOptions) =>
-      prevSelectedOptions.filter((option) => option !== removedTile)
+      prevSelectedOptions.filter((option) => option[1] !== removedTile[1])
     );
   
     setTileOptions((prevTileOptions) => ({
       ...prevTileOptions,
-      [removedTile]: getOptionsForTile(removedTile),
+      [removedTile[1]]: getOptionsForTile(removedTile[1]),
     }));
   };
 
@@ -71,7 +72,7 @@ const GameSearch = () => {
 
       <div className="content">
         <div className="tiles">
-          {['Platform', 'Genre',  'Mode', 'Theme', 'Minimum Rating', 'Minimum Year'].map((tile) => (
+          {['Platform', 'Genre',  /*'Mode',*/ 'Theme', 'Minimum Rating', 'Minimum Year'].map((tile) => (
             <div
               key={tile}
               className={`tile ${selectedTile === tile ? 'selected' : ''}`}
@@ -88,7 +89,7 @@ const GameSearch = () => {
           <div className="tile-options">
             {tileOptions[selectedTile] &&
               tileOptions[selectedTile].map((option, index) => (
-                <div key={index} onClick={() => handleOptionClick(option)}>
+                <div key={index} onClick={() => handleOptionClick(selectedTile, option)}>
                   {option}
                 </div>
               ))}
@@ -98,8 +99,8 @@ const GameSearch = () => {
 
       <div className="selected-options">
         <ul>
-          {selectedOptions.map((option, index) => (
-            <li key={index} onClick={() => handleOptionRemove(option)}>{option}</li>
+          {selectedOptions.map(([tile, option], index) => (
+            <li key={index} onClick={() => handleOptionRemove([tile, option])}>{option}</li>
           ))}
         </ul>
       </div>
