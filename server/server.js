@@ -63,7 +63,8 @@ app.post('/api/searchGames', async (req, res) => {
   const query = buildQueryString(selectedOptions);
   try {
     const response = await igdb(clientId, currentAccessToken)
-        .fields('name,genres.name,artworks,cover,multiplayer_modes,platforms,rating,rating_count,release_dates,summary,tags,themes,total_rating,total_rating_count,url,videos,websites')
+        .fields('name,genres.name,artworks,cover,cover.url,multiplayer_modes,platforms,rating,rating_count,release_dates,summary,tags,themes,total_rating,total_rating_count,url,videos,websites')
+        .offset(req.body.offset)
         .sort('rating', 'desc')
         .where(`${query}`)
         .request('/games');

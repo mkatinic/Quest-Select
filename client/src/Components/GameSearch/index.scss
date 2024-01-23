@@ -2,16 +2,14 @@
     display: flex;
     flex-direction: column;
     align-items: center;
-    height: 35vh;
+    height: 25vh;
     width: 80%;
     padding: 10px;
     margin-left: auto;
     margin-right: auto;
     margin-top: 20px;
-    background-color: black;
     font-family: 'Helvetica Neue';
     color: white;
-    border: 1px solid rgb(0, 110, 255);
     box-shadow: 0 4px 6px rgba(0, 0, 0, 0.1);
     border-radius: 12px;
 
@@ -24,56 +22,61 @@
         .buttons {
             display: flex;
             gap: 10px;
-            color: orange;
         }
     }
   
     .content {
         display: flex;
-        flex-direction: column;
         align-items: center;
         width: 100%;
-
-        .tiles {
-            display: flex;
-            gap: 10px;
-        }
-        
-        .tile {
-            border: 1px solid rgb(0, 110, 255);
-            background-color: black;
+        position: relative;
+        flex-direction: row;
+        align-items: center;
+      
+        .tiles-container {
+          display: flex;
+          gap: 10px;
+          margin-top: 10px;
+          min-width: 40%;
+      
+          .tile {
+            border: 1px solid rgb(255, 136, 0);
+            color: black;
             border-radius: 8px;
             padding: 10px;
             cursor: pointer;
-        }
+            font-size: 13px;
       
-        .tile.selected {
-            background-color: rgb(0, 110, 255);
+            &.selected {
+              background-color: rgb(255, 136, 0);
+            }
+          }
         }
-    }
 
-    .tile-options {
-        display: flex;
-        gap: 10px;
-        margin-top: 10px;
-        justify-content: center;
-    }
+        .options-container {
+            margin-left: 15%; 
+            min-width: 30%;
+            height: 20vh;
+            overflow: scroll;
         
-    .tile-options div {
-        border: 1px solid rgb(0, 110, 255);
-        background-color: black;
-        border-radius: 8px;
-        padding: 10px;
-        cursor: pointer;
-    }
+            .tile-options {
+                color: black;
+                display: grid;
+                grid-template-columns: repeat(auto-fit, minmax(60px, 1fr));
+                gap: 10px;
+            }
 
-    .options {
-        width: 100%;
-        text-align: center;
-        margin-top: 20px;
+            .tile-options div {
+                border: 1px solid rgb(255, 136, 0);
+                border-radius: 4px;
+                font-size: 11px;
+                line-height: 1.5;
+                width: fit-content;
+                padding: 5px;
+            }
+        }
     }
     
-
     .selected-options {
         width: 100%;
         margin-top: 20px;
@@ -86,17 +89,20 @@
     .selected-options ul {
         list-style: none;
         padding: 0;
+        margin: 0;
         display: flex;
-        flex-wrap: wrap; 
-        justify-content: center;
     }
-    
+      
     .selected-options li {
+        border: 1px solid rgb(255, 136, 0);
+        color: black;
+        padding: 5px 10px;
         margin: 5px;
-        padding: 10px;
-        border: 1px solid rgb(0, 110, 255);
-        background-color: black;
-        border-radius: 8px;
-    } 
+        cursor: pointer;
+        border-radius: 5px;
+        transition: background-color 0.3s;
+        font-size: 14px;
+        line-height: 1.5;
+    }
 }
 
