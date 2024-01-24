@@ -12,12 +12,12 @@ const Navbar = () => {
             <NavLink exact="true" activeclassname="active" className="user-link" to="/search">
                 Search
             </NavLink>
-            <NavLink exact="true" activeclassname="active" className="user-link" to="/search">
+            {/* <NavLink exact="true" activeclassname="active" className="user-link" to="/search">
                 Library
             </NavLink>
             <NavLink exact="true" activeclassname="active" className="user-link" to="/login">
                 Login
-            </NavLink>
+            </NavLink> */}
          </nav>
     </div>
     )
