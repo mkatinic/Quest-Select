@@ -139,7 +139,7 @@ const GameSearch = () => {
 
       <div className="result-page">
         <SearchResults games={games} />
-        <button onClick={loadMoreGames} hidden={!hasSearched}>Load More Games</button>
+        <button onClick={loadMoreGames} style={{ display: hasSearched ? 'block' : 'none' }}>Load More Games</button>
       </div>
     </>
   );

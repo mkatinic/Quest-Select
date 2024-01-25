@@ -46,10 +46,10 @@
       z-index: 9;
       border: 0;
       transition: box-shadow .2s;
+    }
 
-      button:hover {
-        box-shadow: rgba(253, 76, 0, 0.5) 0 3px 8px;
-      }
+    button:hover {
+      box-shadow: rgba(253, 76, 0, 0.5) 0 3px 8px;
     }
 
     @keyframes wiggle {
