@@ -1,133 +1,163 @@
 .gamesearch-page {
+  display: flex;
+  flex-direction: column;
+  align-items: center;
+  height: 20vh;
+  width: 80%;
+  padding: 10px;
+  margin-left: auto;
+  margin-right: auto;
+  margin-top: 20px;
+  font-family: 'Helvetica Neue';
+  color: white;
+  box-shadow: 0 4px 6px rgba(0, 0, 0, 0.1);
+  border-radius: 8px;
+  padding-bottom: 20px;
+
+  .header {
     display: flex;
-    flex-direction: column;
+    justify-content: space-between;
+    align-items: flex-start;
+    width: 100%;
+      
+    button {
+      display: flex;
+      animation: wiggle 2s linear;
+      background-color: initial;
+      background-image: linear-gradient(-180deg, rgb(255, 136, 0), rgb(238, 59, 4));
+      border-radius: 6px;
+      box-shadow: rgba(0, 0, 0, 0.1) 0 2px 4px;
+      color: #FFFFFF;
+      cursor: pointer;
+      display: inline-block;
+      font-family: "Helvetica Neue";
+      height: 40px;
+      line-height: 40px;
+      outline: 0;
+      overflow: hidden;
+      padding: 0 20px;
+      pointer-events: auto;
+      position: relative;
+      touch-action: manipulation;
+      user-select: none;
+      -webkit-user-select: none;
+      vertical-align: top;
+      white-space: nowrap;
+      z-index: 9;
+      border: 0;
+      transition: box-shadow .2s;
+
+      button:hover {
+        box-shadow: rgba(253, 76, 0, 0.5) 0 3px 8px;
+      }
+    }
+
+    @keyframes wiggle {
+      0%, 7% {
+        transform: rotateZ(0);
+      }
+      15% {
+        transform: rotateZ(-15deg);
+      }
+      20% {
+        transform: rotateZ(10deg);
+      }
+      25% {
+        transform: rotateZ(-10deg);
+      }
+      30% {
+        transform: rotateZ(6deg);
+      }
+      35% {
+        transform: rotateZ(-4deg);
+      }
+      40%, 100% {
+        transform: rotateZ(0);
+      }
+    }
+  }
+
+  .content {
+    display: flex;
     align-items: center;
-    height: 20vh;
-    width: 80%;
-    padding: 10px;
-    margin-left: auto;
-    margin-right: auto;
-    margin-top: 20px;
-    font-family: 'Helvetica Neue';
-    color: white;
-    box-shadow: 0 4px 6px rgba(0, 0, 0, 0.1);
-    border-radius: 12px;
-
-    .header {
-        display: flex;
-        justify-content: space-between;
-        align-items: flex-start;
-        width: 100%;
-        
-        .buttons {
-            display: flex;
-            gap: 10px;
-            animation: wiggle 3s linear infinite;
-        }
-
-        @keyframes wiggle {
-            0%, 7% {
-              transform: rotateZ(0);
-            }
-            15% {
-              transform: rotateZ(-15deg);
-            }
-            20% {
-              transform: rotateZ(10deg);
-            }
-            25% {
-              transform: rotateZ(-10deg);
-            }
-            30% {
-              transform: rotateZ(6deg);
-            }
-            35% {
-              transform: rotateZ(-4deg);
-            }
-            40%, 100% {
-              transform: rotateZ(0);
-            }
-          }
-    }
+    width: 100%;
+    position: relative;
+    flex-direction: row;
+    align-items: center;
   
-    .content {
-        display: flex;
-        align-items: center;
-        width: 100%;
-        position: relative;
-        flex-direction: row;
-        align-items: center;
-      
-        .tiles-container {
-          display: flex;
-          gap: 10px;
-          margin-top: 10px;
-          min-width: 40%;
-      
-          .tile {
-            border: 1px solid rgb(255, 136, 0);
-            color: black;
-            border-radius: 8px;
-            padding: 10px;
-            cursor: pointer;
-            font-size: 13px;
-      
-            &.selected {
-              background-color: rgb(255, 136, 0);
-            }
-          }
-        }
-
-        .options-container {
-            margin-left: 15%; 
-            min-width: 30%;
-            height: 15vh;
-            overflow: scroll;
-        
-            .tile-options {
-                color: black;
-                display: grid;
-                grid-template-columns: repeat(auto-fit, minmax(70px, 1fr));
-                gap: 10px;
-            }
-
-            .tile-options div {
-                border: 1px solid rgb(255, 136, 0);
-                border-radius: 4px;
-                font-size: 11px;
-                line-height: 1.5;
-                width: fit-content;
-                padding: 5px;
-            }
-        }
-    }
-    
-    .selected-options {
-        width: 100%;
-        margin-top: 20px;
-    }
-    
-    .selected-options h2 {
-        font-size: 18px;
-    }
-    
-    .selected-options ul {
-        list-style: none;
-        padding: 0;
-        margin: 0;
-        display: flex;
-    }
-      
-    .selected-options li {
-        border: 1px solid rgb(255, 136, 0);
+    .tiles-container {
+      display: flex;
+      gap: 10px;
+      margin-top: 10px;
+      min-width: 40%;
+      border: 1px solid rgb(255, 136, 0);
+      background-color: rgb(245, 245, 245);
+      border-radius: 8px;
+  
+      .tile {
         color: black;
-        padding: 5px 10px;
-        margin: 5px;
+        padding: 10px;
         cursor: pointer;
-        border-radius: 5px;
-        transition: background-color 0.3s;
-        font-size: 14px;
-        line-height: 1.5;
+        font-size: 13px;
+  
+        &.selected {
+          background-color: rgb(255, 136, 0);
+          border-radius: 8px;
+        }
+      }
     }
-}
 
+    .options-container {
+      margin-left: 15%; 
+      min-width: 30%;
+      height: 15vh;
+      overflow: scroll;
+      background-color: rgb(245, 245, 245);
+      padding-left: 25px;
+
+      .tile-options {
+        color: black;
+        display: grid;
+        grid-template-columns: repeat(auto-fit, minmax(70px, 1fr));
+        gap: 10px;
+      }
+
+      .tile-options div {
+        border: 1px solid rgb(255, 136, 0);
+        border-radius: 4px;
+        font-size: 11px;
+        line-height: 1.5;
+        width: fit-content;
+        padding: 5px;
+      }
+    }
+  }
+  
+  .selected-options {
+    width: 100%;
+    margin-top: 20px;
+  }
+  
+  .selected-options h2 {
+    font-size: 18px;
+  }
+    
+  .selected-options ul {
+    list-style: none;
+    padding: 0;
+    margin: 0;
+    display: flex;
+  }
+      
+  .selected-options li {
+    border: 1px solid rgb(255, 136, 0);
+    color: black;
+    padding: 5px 10px;
+    margin: 5px;
+    cursor: pointer;
+    border-radius: 5px;
+    transition: background-color 0.3s;
+    font-size: 14px;
+    line-height: 1.5;
+  }
+}
