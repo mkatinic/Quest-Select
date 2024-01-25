@@ -48,7 +48,7 @@ const ProfileCreation = () => {
         
 
     return (
-        <div className='container profileCreation-page'>
+        <div className='profileCreation-page'>
             <form className='form' onSubmit={handleSubmit}>
                 <h1>Sign Up</h1>
                 <label>
