@@ -2,7 +2,6 @@
 TODO:
 
 Make min rating and year slider
-
 */
 
 import './index.scss';
@@ -21,7 +20,7 @@ const GameSearch = () => {
   const getOptionsForTile = (tile) => {
     switch (tile) {
       case 'Platform':
-        return ['PC (Microsoft Windows)', 'Xbox Series S|X', 'PlayStation 5', 'Xbox One', 'Playstation 4', 'Xbox 360', 'Playstation 3', 'Nintendo Switch'];
+        return ['PC (Microsoft Windows)', 'Xbox Series X', 'PlayStation 5', 'Xbox One', 'Playstation 4', 'Xbox 360', 'Playstation 3', 'Nintendo Switch'];
       case 'Genre':
         return ['Role-playing (RPG)', 'Shooter', 'Indie', 'Platform', 'Point-and-click', 'Real Time Strategy (RTS)', 'Simulator', 'Sports', 'Arcade', 'Adventure', 'Racing'];
       case 'Minimum Rating':
@@ -48,13 +47,14 @@ const GameSearch = () => {
       const isOptionSelected = prevSelectedOptions.some(
         ([existingTileValue, existingOption]) => existingTileValue === tile
       );
+  
       return isOptionSelected
         ? prevSelectedOptions.map((prevOption) =>
           prevOption[0] === tile ? [tile, option] : prevOption
         )
         : [...prevSelectedOptions, [tile, option]];
     });
-  };
+  };  
 
   const handleOptionRemove = (removedTile) => {
     setSelectedOptions((prevSelectedOptions) =>
@@ -110,7 +110,7 @@ const GameSearch = () => {
 
         <div className="content">
           <div className="tiles-container">
-            {['Platform', 'Genre', 'Theme', 'Minimum Rating', 'Minimum Year'].map((tile) => (
+            {['Platform', 'Genre', 'Theme'].map((tile) => (
               <div
                 key={tile}
                 className={`tile ${selectedTile === tile ? 'selected' : ''}`}

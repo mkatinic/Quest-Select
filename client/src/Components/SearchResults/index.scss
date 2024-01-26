@@ -9,13 +9,13 @@
         display: flex;
         flex-direction: row;
         align-items: center;
-        border: 1px solid #ddd;
+        font-family: 'Helvetica Neue';
         padding: 20px;
-        width: 250px;
+        width: 300px;
 
-        .result-tile img {
-            width: 40%;
-            margin-right: 20px;
+        img {
+            width: 150px;
+            height: auto;
         }
     }
     

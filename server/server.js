@@ -40,7 +40,7 @@ const getToken = async () => {
     accessToken = response.data.access_token;
     tokenExpirationTime = Date.now() + response.data.expires_in * 1000;
 
-  } catch (error) {
+  }catch (error) {
     console.error('Error getting access token:', error.message);
   }
 };
@@ -52,7 +52,6 @@ const getAccessToken = async () => {
   return accessToken;
 };
 
-
 const isTokenValid = () => {
   return Date.now() < tokenExpirationTime;
 };
@@ -61,20 +60,21 @@ app.post('/api/searchGames', async (req, res) => {
   const selectedOptions = req.body.selectedOptions;
   const currentAccessToken = await getAccessToken();
   const query = buildQueryString(selectedOptions);
+  
   try {
     const response = await igdb(clientId, currentAccessToken)
-        .fields('name,genres.name,artworks,cover,cover.url,multiplayer_modes,platforms,rating,rating_count,release_dates,summary,tags,themes,total_rating,total_rating_count,url,videos,websites')
-        .offset(req.body.offset)
-        .sort('rating', 'desc')
-        .where(`${query}`)
-        .request('/games');
+      .fields('platforms,platforms.name,name,genres.name,cover,cover.image_id,platforms,rating,rating_count,summary,total_rating,total_rating_count,url')
+      .offset(req.body.offset)
+      .sort('rating', 'desc')
+      .where(`${query}`)
+      .request('/games');
 
     res.json(response.data);
   } catch (err) {
-      console.error("-----ERROR-----");
-      console.error(err.response.data);
-      console.error("-----ERROR-----");
-      console.error(err);
+    console.error("-----ERROR-----");
+    console.error(err.response.data);
+    console.error("-----ERROR-----");
+    console.error(err);
   }
 });
 
