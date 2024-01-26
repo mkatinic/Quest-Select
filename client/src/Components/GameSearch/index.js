@@ -1,3 +1,10 @@
+/*
+TODO:
+
+Make min rating and year slider
+
+*/
+
 import './index.scss';
 import React, { useState } from 'react';
 import axios from 'axios';

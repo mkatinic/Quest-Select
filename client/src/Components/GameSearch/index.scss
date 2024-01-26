@@ -78,7 +78,6 @@
   }
 
   .content {
-    display: flex;
     align-items: center;
     width: 100%;
     position: relative;
@@ -87,18 +86,17 @@
   
     .tiles-container {
       display: flex;
+      float: left;
       gap: 10px;
       margin-top: 10px;
-      min-width: 40%;
-      border: 1px solid rgb(255, 136, 0);
+      width: 396px;
       background-color: rgb(245, 245, 245);
-      border-radius: 8px;
   
       .tile {
         color: black;
         padding: 10px;
         cursor: pointer;
-        font-size: 13px;
+        font-size: 11px;
   
         &.selected {
           background-color: rgb(255, 136, 0);
@@ -108,17 +106,18 @@
     }
 
     .options-container {
-      margin-left: 15%; 
-      min-width: 30%;
-      height: 15vh;
+      width: 40%;
+      float: right;
+      height: 25vh;
       overflow: scroll;
-      background-color: rgb(245, 245, 245);
       padding-left: 25px;
+      margin-top: -45px;
 
       .tile-options {
         color: black;
-        display: grid;
-        grid-template-columns: repeat(auto-fit, minmax(70px, 1fr));
+        display: flex;
+        flex-wrap: wrap;
+        justify-content: space-evenly;
         gap: 10px;
       }
 

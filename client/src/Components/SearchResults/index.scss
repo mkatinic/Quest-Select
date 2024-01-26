@@ -14,7 +14,7 @@
         width: 250px;
 
         .result-tile img {
-            width: 30%;
+            width: 40%;
             margin-right: 20px;
         }
     }
@@ -41,7 +41,7 @@
     button {
         position: fixed;
         bottom: 20px;
-        right: 20px;
+        margin-top: 20px;
         display: flex;
         animation: wiggle 2s linear;
         background-color: initial;
