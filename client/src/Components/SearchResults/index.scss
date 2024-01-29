@@ -1,9 +1,9 @@
 .result-page {
-    display: flex;
-    flex-wrap: wrap;
-    justify-content: space-evenly;
+    display: grid;
+    grid-template-columns: repeat(2, 1fr);
+    width: 100%;
     gap: 20px;
-    margin-top: 40px;
+    margin-top: 30px;
 
     .result-tile {
         display: flex;
@@ -22,21 +22,73 @@
     .text-info {
         flex-grow: 1;
         margin-left: 20px;
-    }
-    
-    .text-info h3,
-    .text-info p {
-        margin: 0;
-    }
-    
-    .text-info h3 {
-        font-size: 1.5em;
-        font-weight: bold;
-    }
-    
-    .text-info p {
-        color: #555;
-    }    
+
+        .game-name {
+            font-family: 'Helvetica Neue';
+            font-size: 14px;
+            color: black;
+        }
+
+        .text-info h3,
+        .text-info p {
+            margin: 0;
+        }
+        
+        .text-info h3 {
+            font-size: 1.5em;
+            font-weight: bold;
+        }
+        
+        .text-info p {
+            color: #555;
+        } 
+
+        .percent {
+            width: 150px;
+            height: 150px;
+            position: relative;
+        }
+          
+        .percent svg {
+            width: 150px;
+            height: 150px;
+            position: relative;
+        }
+          
+        .percent svg circle {
+            width: 150px;
+            height: 150px;
+            fill: none;
+            stroke-width: 10;
+            stroke: #000;
+            transform: translate(5px, 5px);
+            stroke-dasharray: 220;
+            stroke-dashoffset: 220;
+            stroke-linecap: round;
+        }
+
+        .percent svg circle:nth-child(1) {
+            stroke-dashoffset: 0;
+            stroke: #adadad;
+        }
+          
+        .percent svg circle:nth-child(2) {
+            stroke-dashoffset: calc(440 - (440 * var(--rating)) / 100);
+            stroke: rgb(12, 105, 0);
+        }
+
+        .percent .num {
+            top: 0;
+            left: 0;
+            width: 100%;
+            height: 100%;
+            padding-left: 23px;
+            padding-top: 22px;
+            display: flex;
+            position: absolute;
+            color: black;
+        }
+    }   
 
     button {
         position: fixed;
@@ -68,6 +120,7 @@
         z-index: 9;
         border: 0;
         transition: box-shadow .2s;
+        grid-column: span 2;
     }
 
     button:hover {

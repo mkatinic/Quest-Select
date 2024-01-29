@@ -62,10 +62,11 @@
 
     .favourite-games {
         position: relative;
-        width: 150px;
-        height: 150px;
+        width: 120px;
+        height: 120px;
         margin-left: auto;
         margin-right: auto;
+        margin-top: 40px;
         transform-style: preserve-3d;
         animation: slid 30s linear infinite;
 
